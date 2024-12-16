@@ -1,0 +1,188 @@
+/* standards ________________________________________________________________*/
+* {
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: none;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+}
+:root {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --black010: rgba(0, 0, 0, 0.1);
+  --black050: rgba(0, 0, 0, 0.5);
+  --gray010: rgba(128, 128, 128, 0.1);
+  --gray050: rgba(128, 128, 128, 0.5);
+  --white010: rgba(255, 255, 255, 0.1);
+  --white050: rgba(255, 255, 255, 0.5);
+  --accent: lightsteelblue;
+  --shadow: 0 0 0.5rem var(--black050);
+  --dark-bg-color: rgb(33, 33, 33);
+  --dark-color: rgb(222, 222, 222);
+  background-color: var(--dark-bg-color);
+  color: var(--dark-color);
+}
+/* elements _________________________________________________________________*/
+button {
+  background-color: var(--white010);
+  color: inherit;
+  cursor: pointer;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  outline: 1px solid;
+}
+button:hover,
+button:focus {
+  outline: 2px solid;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1.5rem;
+}
+hr {
+  border: 1px solid;
+  width: 100%;
+}
+img {
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+/* segments _________________________________________________________________*/
+body {
+  padding: 1rem;
+  max-width: 900px;
+}
+
+.cvContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.dataInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dataInput {
+  width: 15rem;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  outline: 1px solid var(--dark-color);
+  background-color: var(--white010);
+  > button {
+    outline: none;
+    padding: 0;
+    background-color: transparent;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input,
+input[type='date'] {
+  background-color: var(--dark-bg-color);
+  padding: 0 0.5rem;
+  border-radius: 1rem;
+  color: var(--dark-color);
+}
+input[type='date']:placeholder-shown,
+input::placeholder {
+  color: var(--white050);
+}
+
+input::-webkit-calendar-picker-indicator {
+  filter: invert(0.75);
+}
+
+.expanded {
+  transition: 500ms ease;
+}
+
+.collapsed {
+  transform: rotate(180deg);
+  transition: 500ms ease;
+}
+
+.hidden {
+  display: none;
+}
+/* output ------------------------------------------------------------------ */
+
+.dataOutput {
+  background-color: var(--white010);
+  padding: 1rem;
+  flex: 1;
+}
+
+div > h2,
+p.name {
+  text-align: center;
+  font-size: 2rem;
+  flex: 1 1 100%;
+}
+
+.generalOutput {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.educationalOutput,
+.practicalOutput {
+  padding-bottom: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr;
+  grid-template-areas:
+    'date1 date2 .'
+    'location location .'
+    'location location .';
+  > .startdate {
+    grid-area: date1;
+    text-align: end;
+    &::after {
+      content: ' –';
+    }
+  }
+  > .enddate {
+    grid-area: date2;
+  }
+  > .location {
+    grid-area: location;
+    text-align: center;
+  }
+  > .school,
+  > .company {
+    font-weight: 900;
+  }
+}
